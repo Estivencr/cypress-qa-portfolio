@@ -20,22 +20,6 @@ Suite de pruebas E2E automatizadas con Cypress para la aplicación SauceDemo.
 - Page Object Model
 - GitHub Actions CI/CD
 
-## Estructura del proyecto
-cypress/
-├── e2e/
-│   ├── auth/login.cy.js
-│   └── shop/
-│       ├── carrito.cy.js
-│       └── checkout.cy.js
-├── support/
-│   ├── pages/
-│   │   ├── LoginPage.js
-│   │   ├── InventoryPage.js
-│   │   ├── CartPage.js
-│   │   └── CheckoutPage.js
-│   └── commands.js
-└── cypress.config.js
-
 ## Cómo ejecutar
 
 ```bash

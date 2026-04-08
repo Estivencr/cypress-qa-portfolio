@@ -24,10 +24,22 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+/*
 Cypress.Commands.add('loginSauceDemo', (usuario = 'standard_user') => {
   cy.visit('/')
   cy.get('[data-test="username"]').type(usuario)
   cy.get('[data-test="password"]').type('secret_sauce')
   cy.get('[data-test="login-button"]').click()
   cy.url().should('include', '/inventory')
+})
+*/
+
+Cypress.Commands.add('loginSauceDemo', (tipoUsuario = 'valido') => {
+  cy.fixture('usuarios').then((users) => {
+    const usuario = users[tipoUsuario]
+    cy.visit('/')
+    cy.get('[data-test="username"]').type(usuario.usuario)
+    cy.get('[data-test="password"]').type(usuario.password)
+    cy.get('[data-test="login-button"]').click()
+  })
 })

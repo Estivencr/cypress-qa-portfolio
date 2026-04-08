@@ -9,29 +9,37 @@ describe('Carrito — SauceDemo', () => {
 })
 
   it('carrito — debe agregar un producto y mostrar badge', () => {
-    InventoryPage.agregarAlCarrito('Sauce Labs Backpack')
 
-    InventoryPage.badgeCarrito
+    cy.fixture('productos').then((products) => {
+      InventoryPage.agregarAlCarrito(products.mochila)
+
+      InventoryPage.badgeCarrito
       .should('be.visible')
       .and('have.text', '1')
+    })    
   })
 
   it('carrito — debe mostrar el producto agregado', () => {
-    InventoryPage.agregarAlCarrito('Sauce Labs Backpack')
-    InventoryPage.irAlCarrito()
+    cy.fixture('productos').then((products) => {
+      InventoryPage.agregarAlCarrito(products.mochila)
 
-    CartPage.itemsCarrito.should('have.length', 1)
-    cy.contains('Sauce Labs Backpack').should('be.visible')
+      InventoryPage.irAlCarrito()
+
+      CartPage.itemsCarrito.should('have.length', 1)
+      cy.contains(products.mochila).should('be.visible')
+    })
   })
 
   it('carrito — debe agregar múltiples productos', () => {
-    InventoryPage.agregarAlCarrito('Sauce Labs Backpack')
-    InventoryPage.agregarAlCarrito('Sauce Labs Bike Light')
+    cy.fixture('productos').then((products) => {
+      InventoryPage.agregarAlCarrito(products.mochila)
+      InventoryPage.agregarAlCarrito(products.luz_bicicleta)
 
-    InventoryPage.badgeCarrito.should('have.text', '2')
-    InventoryPage.irAlCarrito()
+      InventoryPage.badgeCarrito.should('have.text', '2')
+      InventoryPage.irAlCarrito()
 
-    CartPage.itemsCarrito.should('have.length', 2)
+      CartPage.itemsCarrito.should('have.length', 2)
+    })
   })
 
   it('carrito — debe estar vacío al inicio', () => {

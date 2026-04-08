@@ -1,0 +1,15 @@
+{
+  "valido": {
+    "nombre": "Estiven",
+    "apellido": "QA",
+    "postal": "110111"
+  },
+  "sin_nombre": {
+    "apellido": "QA",
+    "postal": "110111"
+  },
+  "sin_postal": {
+    "nombre": "Estiven",
+    "apellido": "QA"
+  }
+}

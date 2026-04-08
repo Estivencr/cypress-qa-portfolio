@@ -7,26 +7,29 @@ describe('Login — SauceDemo', () => {
   })
 
   it('login — debe redirigir al inventario con credenciales válidas', () => {
-    LoginPage.iniciarSesion('standard_user', 'secret_sauce')
-
-    cy.url().should('include', '/inventory')
-    cy.get('.inventory_list').should('be.visible')
+    cy.fixture('usuarios').then((users) => {
+      LoginPage.iniciarSesion(users.valido.usuario, users.valido.password)
+      cy.url().should('include', '/inventory')
+      cy.get('.inventory_list').should('be.visible')
+    })
   })
 
   it('login — debe mostrar error con usuario bloqueado', () => {
-    LoginPage.iniciarSesion('locked_out_user', 'secret_sauce')
-
-    LoginPage.mensajeError
-      .should('be.visible')
-      .and('contain', 'locked out')
+    cy.fixture('usuarios').then((users) => {
+      LoginPage.iniciarSesion(users.bloqueado.usuario, users.bloqueado.password)
+      LoginPage.mensajeError
+        .should('be.visible')
+        .and('contain', 'locked out')
+    })
   })
 
   it('login — debe mostrar error con contraseña incorrecta', () => {
-    LoginPage.iniciarSesion('standard_user', 'password_malo')
-
-    LoginPage.mensajeError
-      .should('be.visible')
-      .and('contain', 'Username and password do not match')
+    cy.fixture('usuarios').then((users) => {
+      LoginPage.iniciarSesion(users.password_incorrecto.usuario, users.password_incorrecto.password)
+      LoginPage.mensajeError
+        .should('be.visible')
+        .and('contain', 'Username and password do not match')
+    })
   })
 
   it('login — debe mostrar error con campos vacíos', () => {

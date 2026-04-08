@@ -1,6 +1,5 @@
 # Cypress QA Portfolio — SauceDemo E2E Tests
-
-![Cypress Tests](https://github.com/Estivencr/cypress-qa-portfolio/actions/workflows/cypress-tests.yml/badge.svg)
+[![Cypress Tests](https://github.com/Estivencr/cypress-qa-portfolio/actions/workflows/cypress-test.yml/badge.svg)](https://github.com/Estivencr/cypress-qa-portfolio/actions)
 
 Suite de pruebas E2E automatizadas con Cypress para la aplicación SauceDemo.
 

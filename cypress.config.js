@@ -8,7 +8,6 @@ module.exports = defineConfig({
     // Tiempo máximo de espera por elemento
     defaultCommandTimeout: 8000,
 
-    experimentalSessionAndOrigin: true,
     reporter: 'cypress-mochawesome-reporter',
     reporterOptions: {
       reportDir: 'cypress/reports',

@@ -25,7 +25,9 @@ module.exports = defineConfig({
       'cypress/e2e/1-getting-started/**',
       'cypress/e2e/2-advanced-examples/**'
     ],
-    setupNodeEvents(on, config) {}
+    setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on)
+    }
   },
   env: {
     SHELL: 'powershell'

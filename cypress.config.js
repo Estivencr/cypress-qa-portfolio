@@ -1,6 +1,8 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  allowCypressEnv: false,
+
   e2e: {
     // URL base — no repites el dominio en cada test
     baseUrl: 'https://www.saucedemo.com',
@@ -27,9 +29,6 @@ module.exports = defineConfig({
     ],
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on)
-    }
+    },
   },
-  env: {
-    SHELL: 'powershell'
-  }
 })

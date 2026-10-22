@@ -9,7 +9,7 @@ describe('Login — SauceDemo', () => {
   it('login — debe redirigir al inventario con credenciales válidas', () => {
     cy.fixture('usuarios').then((users) => {
       LoginPage.iniciarSesion(users.valido.usuario, users.valido.password)
-      cy.url().should('include', '/inventory')
+      cy.url().should('include', '/inventario')
       cy.get('.inventory_list').should('be.visible')
     })
   })

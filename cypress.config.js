@@ -1,7 +1,6 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  allowCypressEnv: false,
 
   e2e: {
     // URL base — no repites el dominio en cada test
